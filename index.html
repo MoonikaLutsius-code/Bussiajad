@@ -1,0 +1,13 @@
+<!doctype html><html lang="et"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Saku bussiajad</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f7f7f5;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#171717}.app{max-width:480px;margin:auto;padding:32px 18px}h1{font-size:30px;margin:10px 0 30px}h2{font-size:18px;margin:0 0 14px}.choices{display:grid;gap:12px}.choice,.back{border:0;border-radius:16px;padding:20px 16px;font-size:18px;font-weight:700;color:white;cursor:pointer;text-align:left}.green{background:#174f3a}.blue{background:#183c68}.gray{background:#60656a}.result{display:none}.top{display:flex;align-items:center;gap:12px;margin-bottom:25px}.back{background:#e7e7e4;color:#222;padding:10px 14px}.card{border-radius:18px;background:white;padding:18px;margin:12px 0;box-shadow:0 2px 10px #0000000c}.line{display:flex;align-items:center;justify-content:space-between}.time{font-size:28px;font-weight:800}.bus{padding:7px 11px;border-radius:10px;color:white;font-weight:800}.b1{background:#287b52}.b2{background:#3167a3}.b3{background:#8a5b32}.meta{margin-top:9px;font-size:16px}.muted{color:#707070;font-size:14px;margin-top:5px}.note{margin-top:24px;color:#777;font-size:13px;text-align:center}</style></head><body><main class="app">
+<section id="pick"><h1>Kuidas koju saan?</h1><h2>Olen siin:</h2><div class="choices">
+<button class="choice green" onclick="show('Alg-/Muusikakool')">Alg-/Muusikakool</button>
+<button class="choice blue" onclick="show('Põhikool')">Põhikool</button>
+<button class="choice gray" onclick="show('Gümnaasium / Huvikeskus')">Gümnaasium / Huvikeskus</button>
+</div></section>
+<section id="result" class="result"><div class="top"><button class="back" onclick="back()">←</button><h2 id="where"></h2></div><div id="cards"></div><div class="note">Esialgne kujundus – näidisajad. Järgmise sammuna ühendame päris sõiduplaani.</div></section>
+</main><script>
+const demo=[{t:'14:45',b:'SV15',d:'14 min',a:'14:59',c:'b1'},{t:'15:05',b:'117',d:'18 min',a:'15:23',c:'b2'},{t:'15:35',b:'SV17',d:'22 min',a:'15:57',c:'b3'}];
+function show(place){document.getElementById('pick').style.display='none';document.getElementById('result').style.display='block';document.getElementById('where').textContent='Olen: '+place;document.getElementById('cards').innerHTML=demo.map(x=>'<div class="card"><div class="line"><span class="time">'+x.t+'</span><span class="bus '+x.c+'">'+x.b+'</span></div><div class="meta">Kohal <b>'+x.a+'</b> · '+x.d+'</div></div>').join('')}
+function back(){document.getElementById('result').style.display='none';document.getElementById('pick').style.display='block'}
+</script></body></html>
